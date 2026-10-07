@@ -1,0 +1,212 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon.com Shopping Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="~/Content/style.css" />
+</head>
+<body>
+
+    <header class="amazon-header">
+        <div class="header-left">
+            <a href="#" class="logo-text">amazon<span>.com</span></a>
+            <div class="deliver-to">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <span class="line-1">Deliver to</span>
+                    <span class="line-2">Vietnam</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-search">
+            <select class="search-select"><option>All</option></select>
+            <input type="text" placeholder="Search Amazon" />
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+
+        <div class="header-right">
+            <div class="nav-item"><span class="line-1">Hello, K I N G</span><span class="line-2">Account & Lists</span></div>
+            <div class="nav-item"><span class="line-1">Returns</span><span class="line-2">& Orders</span></div>
+            <div class="cart-nav">
+                <i class="fas fa-shopping-cart fa-2x"></i>
+                <span id="cart-badge" class="cart-count">0</span>
+                <span class="cart-text">Cart</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="sub-nav">
+        <a href="#"><i class="fas fa-bars"></i> All</a>
+        <a href="#">Today's Deals</a>
+        <a href="#">Customer Service</a>
+        <a href="#">Registry</a>
+        <a href="#">Gift Cards</a>
+        <a href="#">Sell</a>
+    </div>
+
+    <div class="main-container">
+        <div class="content-left">
+
+            <div class="cart-box">
+                <div class="cart-header">
+                    <h1>Shopping Cart</h1>
+                    <a href="javascript:void(0)" class="deselect-link" onclick="toggleAllCheckboxes(false)">Deselect all items</a>
+                    <span class="price-col-title">Price</span>
+                </div>
+
+                <div class="cart-item" data-price="144.00">
+                    <input type="checkbox" checked class="item-checkbox" onchange="updateCart()">
+                    <div class="item-img">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg1qQA0-J7KOyzEKnumcW4PWKMxqCZJZjIlEeLnQt8wQ&s" alt="Tommy Hilfiger Bag">
+                    </div>
+                    <div class="item-info">
+                        <div class="item-title">Tommy Hilfiger Women's Leather Saddle Shoulder Bag with Removable Crossbody Strap</div>
+                        <div class="stock-status">In Stock</div>
+                        <div class="shipping-info">FREE International Returns</div>
+                        <div class="gift-option"><input type="checkbox"> This is a gift <a href="#">Learn more</a></div>
+
+                        <div class="item-actions">
+                            <div class="qty-selector">
+                                <button type="button" class="btn-qty" onclick="changeQty(this, -1)">-</button>
+                                <input type="number" class="qty-input" value="1" min="1" onchange="updateCart()">
+                                <button type="button" class="btn-qty" onclick="changeQty(this, 1)">+</button>
+                            </div>
+                            <span class="action-sep">|</span>
+                            <a href="javascript:void(0)" class="action-link" onclick="deleteItem(this)">Delete</a>
+                            <span class="action-sep">|</span>
+                            <a href="#" class="action-link">Save for later</a>
+                        </div>
+                    </div>
+                    <div class="item-price">$<span class="item-subtotal">144.00</span></div>
+                </div>
+
+                <div class="cart-item" data-price="98.00">
+                    <input type="checkbox" checked class="item-checkbox" onchange="updateCart()">
+                    <div class="item-img">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_goVv2CqYiRhIOifKdZ3F3vzCeqE3XMiT5wU9gMlHqQ&s=10" alt="Rosa Pump">
+                    </div>
+                    <div class="item-info">
+                        <div class="item-title">Sam Edelman Women's Rosa Pump, Cape Blue, 10</div>
+                        <div class="stock-status">In Stock</div>
+                        <div class="item-attr">Size: 10</div>
+                        <div class="item-attr">Color: Cape Blue</div>
+                        <div class="gift-option"><input type="checkbox"> This is a gift <a href="#">Learn more</a></div>
+
+                        <div class="item-actions">
+                            <div class="qty-selector">
+                                <button type="button" class="btn-qty" onclick="changeQty(this, -1)">-</button>
+                                <input type="number" class="qty-input" value="2" min="1" onchange="updateCart()">
+                                <button type="button" class="btn-qty" onclick="changeQty(this, 1)">+</button>
+                            </div>
+                            <span class="action-sep">|</span>
+                            <a href="javascript:void(0)" class="action-link" onclick="deleteItem(this)">Delete</a>
+                            <span class="action-sep">|</span>
+                            <a href="#" class="action-link">Save for later</a>
+                        </div>
+                    </div>
+                    <div class="item-price">$<span class="item-subtotal">196.00</span></div>
+                </div>
+
+                <div class="cart-item" data-price="23.00">
+                    <input type="checkbox" checked class="item-checkbox" onchange="updateCart()">
+                    <div class="item-img">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGQ2A1ow2dFjJiDXcPzgdAXLeYj7eOMFvRLfzC4JMqvx-fv4RiFQR05Lo&s=10" alt="Tunic Top">
+                    </div>
+                    <div class="item-info">
+                        <div class="item-title">Newchoice Dressy Casual Tops for Women, Collared V Neck 3/4 Sleeve Blouses Loose Fitting Tunic Tops (Sage Green, XL)</div>
+                        <div class="badge-deal"><span class="deal-tag">10% off</span> Ends in 3:49:06</div>
+                        <div class="stock-status">In Stock</div>
+                        <div class="item-attr">Size: X-Large</div>
+                        <div class="item-attr">Color: Sage Green</div>
+
+                        <div class="item-actions">
+                            <div class="qty-selector">
+                                <button type="button" class="btn-qty" onclick="changeQty(this, -1)">-</button>
+                                <input type="number" class="qty-input" value="3" min="1" onchange="updateCart()">
+                                <button type="button" class="btn-qty" onclick="changeQty(this, 1)">+</button>
+                            </div>
+                            <span class="action-sep">|</span>
+                            <a href="javascript:void(0)" class="action-link" onclick="deleteItem(this)">Delete</a>
+                            <span class="action-sep">|</span>
+                            <a href="#" class="action-link">Save for later</a>
+                        </div>
+                    </div>
+                    <div class="item-price">$<span class="item-subtotal">69.00</span></div>
+                </div>
+
+                <div class="cart-subtotal-bottom">
+                    Subtotal (<span class="total-items-text">0</span> items): <strong>$<span class="grand-total-text">0.00</span></strong>
+                </div>
+            </div>
+
+            <div class="your-items-box">
+                <h2>Your Items</h2>
+                <div class="tab-links">
+                    <a href="#" class="active">Buy it again</a>
+                    <a href="#">Saved for later</a>
+                </div>
+
+                <div class="recommend-list">
+                    <div class="rec-item">
+                        <img class="rec-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8LJIualf3XloaxK5iklYP2xhXYVLL0z_WycG64mKLfg&s=10" alt="HOBIBEAR Shoes">
+                        <div class="rec-info">
+                            <a href="#" class="rec-title">HOBIBEAR Barefoot Shoes Wide Casual Lace Up Retro Fashion Sneakers</a>
+                            <div class="rec-price">$43.99</div>
+                            <button type="button" class="btn-add-cart" onclick="addRecommended('HOBIBEAR Barefoot Shoes', 43.99, 'https://m.media-amazon.com/images/I/71G1M5dCggL._AC_UY1000_.jpg')">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <div class="rec-item">
+                        <img class="rec-img" src="https://m.media-amazon.com/images/I/61NfA5O09LL._AC_UY1000_.jpg" alt="Men's Walking Shoes">
+                        <div class="rec-info">
+                            <a href="#" class="rec-title">Men's Slip on Walking Shoes Tennis Running Sneakers</a>
+                            <div class="rec-price">$29.99</div>
+                            <button type="button" class="btn-add-cart" onclick="addRecommended('Men\'s Slip on Walking Shoes', 29.99, 'https://m.media-amazon.com/images/I/61NfA5O09LL._AC_UY1000_.jpg')">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <div class="rec-item">
+                        <img class="rec-img" src="https://m.media-amazon.com/images/I/61M63d63A6L._AC_UY1000_.jpg" alt="Baseball Hat">
+                        <div class="rec-info">
+                            <a href="#" class="rec-title">Croogo Short Bill Brim Dad Cap Unisex Classic Baseball Hat</a>
+                            <div class="rec-price">$16.50</div>
+                            <button type="button" class="btn-add-cart" onclick="addRecommended('Croogo Short Bill Brim Cap', 16.50, 'https://m.media-amazon.com/images/I/61M63d63A6L._AC_UY1000_.jpg')">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="content-right">
+            <div class="checkout-box">
+                <div class="subtotal-title">
+                    Subtotal (<span class="total-items-text">0</span> items): <strong>$<span class="grand-total-text">0.00</span></strong>
+                </div>
+                <div class="gift-check">
+                    <input type="checkbox"> This order contains a gift
+                </div>
+                <button type="button" class="btn-checkout" onclick="alert('Đang chuyển hướng tới trang thanh toán!')">Proceed to checkout</button>
+
+                <div class="prime-promo">
+                    <span class="prime-blue">prime</span> Get free and faster delivery with a 30-day FREE trial.
+                    <button type="button" class="btn-prime">Try Prime</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="amazon-footer">
+        <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">Back to top</div>
+    </footer>
+
+    <script src="~/Scripts/script.js"></script>
+</body>
+</html>
